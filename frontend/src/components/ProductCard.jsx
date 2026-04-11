@@ -5,9 +5,12 @@ import { HiOutlineShoppingBag } from 'react-icons/hi';
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
 
+  const serverUrl = import.meta.env.VITE_API_URL || '';
   const imgSrc = product.image?.startsWith('http')
     ? product.image
-    : product.image || '/uploads/default-product.jpg';
+    : product.image
+    ? `${serverUrl}${product.image}`
+    : '/uploads/default-product.jpg';
 
   return (
     <div className="card group">

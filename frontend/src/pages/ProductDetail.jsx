@@ -43,9 +43,12 @@ const ProductDetail = () => {
     );
   }
 
+  const serverUrl = import.meta.env.VITE_API_URL || '';
   const imgSrc = product.image?.startsWith('http')
     ? product.image
-    : product.image || '/uploads/default-product.jpg';
+    : product.image
+    ? `${serverUrl}${product.image}`
+    : '/uploads/default-product.jpg';
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
