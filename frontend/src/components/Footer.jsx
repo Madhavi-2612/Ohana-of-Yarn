@@ -58,10 +58,13 @@ const Footer = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-primary-100 mt-8 pt-8 text-center">
-          <p className="text-gray-400 text-sm flex items-center justify-center gap-1">
+        <div className="border-t border-primary-100 mt-8 pt-8 text-center text-gray-400 text-sm space-y-1">
+          <p className="flex items-center justify-center gap-1">
             Made with <HiOutlineHeart className="text-primary-400 w-4 h-4" /> by
             Ohana of Yarn © {new Date().getFullYear()}
+          </p>
+          <p className="text-xs opacity-75">
+            Developed by Madhu
           </p>
         </div>
       </div>
