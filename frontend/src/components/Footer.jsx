@@ -52,7 +52,7 @@ const Footer = () => {
             <ul className="space-y-2 text-gray-500">
               <li>📧 helloohanaofyarn@gmail.com</li>
               <li>📱 +91 9498431171</li>
-              <li>📍 Ashok Nagar, Avadi, Chennai 600062</li>
+              <li>📍Chennai 600062</li>
             </ul>
           </div>
         </div>
