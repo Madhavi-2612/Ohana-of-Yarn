@@ -3,7 +3,17 @@ const Order = require('../models/Order');
 // POST /api/orders
 exports.createOrder = async (req, res) => {
   try {
-    const { items, totalAmount, shippingAddress, paymentMethod, razorpayOrderId, razorpayPaymentId } = req.body;
+    const { 
+      items, 
+      totalAmount, 
+      shippingAddress, 
+      paymentMethod, 
+      razorpayOrderId, 
+      razorpayPaymentId,
+      isGift,
+      giftMessage,
+      customizationNote
+    } = req.body;
 
     if (!items || items.length === 0) {
       return res.status(400).json({ message: 'No order items' });
@@ -17,6 +27,9 @@ exports.createOrder = async (req, res) => {
       paymentMethod,
       razorpayOrderId,
       razorpayPaymentId,
+      isGift,
+      giftMessage,
+      customizationNote,
       paymentStatus: paymentMethod === 'razorpay' && razorpayPaymentId ? 'paid' : 'pending',
     });
 

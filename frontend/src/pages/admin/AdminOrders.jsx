@@ -100,6 +100,25 @@ const AdminOrders = () => {
                     {order.shippingAddress?.city}, {order.shippingAddress?.state} {order.shippingAddress?.pincode}
                   </p>
                   <p className="text-sm text-gray-600">{order.shippingAddress?.phone}</p>
+                  
+                  {(order.isGift || order.customizationNote) && (
+                    <div className="mt-4 p-3 bg-red-50/50 rounded-lg border border-red-100">
+                      {order.isGift && (
+                        <div className="mb-2">
+                          <p className="text-[10px] font-bold text-red-600 uppercase tracking-wider mb-1">🎁 GIFT ORDER</p>
+                          {order.giftMessage && (
+                            <p className="text-xs text-gray-700 italic border-l-2 border-red-200 pl-2">"{order.giftMessage}"</p>
+                          )}
+                        </div>
+                      )}
+                      {order.customizationNote && (
+                        <div>
+                          <p className="text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1">📝 CUSTOMIZATION</p>
+                          <p className="text-xs text-gray-700">{order.customizationNote}</p>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
 
                 {/* Items */}

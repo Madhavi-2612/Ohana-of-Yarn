@@ -44,6 +44,9 @@ const orderSchema = new mongoose.Schema(
     },
     razorpayOrderId: { type: String },
     razorpayPaymentId: { type: String },
+    isGift: { type: Boolean, default: false },
+    giftMessage: { type: String },
+    customizationNote: { type: String },
     status: {
       type: String,
       enum: ['processing', 'confirmed', 'shipped', 'delivered', 'cancelled'],

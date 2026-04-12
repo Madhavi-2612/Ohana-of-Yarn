@@ -94,6 +94,25 @@ const Orders = () => {
                 ))}
               </div>
 
+              </div>
+
+              {(order.isGift || order.customizationNote) && (
+                <div className="mt-4 p-3 bg-primary-50/50 rounded-lg border border-primary-100">
+                  {order.isGift && order.giftMessage && (
+                    <div className="mb-2">
+                      <p className="text-xs font-bold text-primary-600 uppercase tracking-wider mb-1">🎁 Gift Message</p>
+                      <p className="text-sm text-gray-700 italic">"{order.giftMessage}"</p>
+                    </div>
+                  )}
+                  {order.customizationNote && (
+                    <div>
+                      <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">📝 Customization Note</p>
+                      <p className="text-sm text-gray-700">{order.customizationNote}</p>
+                    </div>
+                  )}
+                </div>
+              )}
+
               <div className="flex flex-wrap items-center justify-between mt-4 pt-4 border-t border-primary-100">
                 <p className="text-sm text-gray-500">
                   {new Date(order.createdAt).toLocaleDateString('en-IN', {

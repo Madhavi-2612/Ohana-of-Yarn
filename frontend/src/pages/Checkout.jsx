@@ -19,6 +19,11 @@ const Checkout = () => {
     state: '',
     pincode: '',
   });
+  const [giftData, setGiftData] = useState({
+    isGift: false,
+    giftMessage: '',
+    customizationNote: '',
+  });
 
   const handleChange = (e) => {
     setAddress({ ...address, [e.target.name]: e.target.value });
@@ -70,6 +75,7 @@ const Checkout = () => {
                 paymentMethod: 'razorpay',
                 razorpayOrderId: response.razorpay_order_id,
                 razorpayPaymentId: response.razorpay_payment_id,
+                ...giftData,
               };
 
               await createOrder(orderData);
@@ -119,6 +125,7 @@ const Checkout = () => {
         totalAmount,
         shippingAddress: address,
         paymentMethod: 'cod',
+        ...giftData,
       };
 
       await createOrder(orderData);
@@ -211,6 +218,49 @@ const Checkout = () => {
                   className="input-field"
                   placeholder="PIN code"
                 />
+              </div>
+            </div>
+
+            <div className="mt-8 border-t border-primary-50 pt-6">
+              <h2 className="font-display font-semibold text-gray-800 mb-4">
+                🎁 Gift & Customization
+              </h2>
+              <div className="space-y-4">
+                <label className="flex items-center gap-2 cursor-pointer group">
+                  <input
+                    type="checkbox"
+                    checked={giftData.isGift}
+                    onChange={(e) => setGiftData({ ...giftData, isGift: e.target.checked })}
+                    className="w-5 h-5 rounded border-primary-200 text-primary-600 focus:ring-primary-500"
+                  />
+                  <span className="text-gray-700 group-hover:text-primary-600 transition-colors">
+                    Is this a gift? (Add a free gift message)
+                  </span>
+                </label>
+
+                {giftData.isGift && (
+                  <div className="animate-fade-in">
+                    <label className="block text-sm font-medium text-gray-600 mb-1">Gift Message</label>
+                    <textarea
+                      value={giftData.giftMessage}
+                      onChange={(e) => setGiftData({ ...giftData, giftMessage: e.target.value })}
+                      className="input-field min-h-[100px] py-3"
+                      placeholder="Enter the message you want us to include with the gift..."
+                    />
+                  </div>
+                )}
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-600 mb-1">
+                    Special Customization Note (Optional)
+                  </label>
+                  <textarea
+                    value={giftData.customizationNote}
+                    onChange={(e) => setGiftData({ ...giftData, customizationNote: e.target.value })}
+                    className="input-field min-h-[80px] py-3"
+                    placeholder="Any specific requests or customization details?"
+                  />
+                </div>
               </div>
             </div>
           </div>
