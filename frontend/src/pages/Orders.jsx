@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getMyOrders } from '../services/api';
+import { getMyOrders, getImageUrl } from '../services/api';
 
 const statusColors = {
   processing: 'bg-yellow-100 text-yellow-700',
@@ -76,7 +76,7 @@ const Orders = () => {
                 {order.items.map((item, i) => (
                   <div key={i} className="flex items-center gap-4 py-3">
                     <img
-                      src={item.image || 'https://placehold.co/60x60/f8e8e0/ec4899?text=🧶'}
+                      src={getImageUrl(item.image)}
                       alt={item.name}
                       className="w-14 h-14 object-cover rounded-lg bg-blush"
                       onError={(e) => {

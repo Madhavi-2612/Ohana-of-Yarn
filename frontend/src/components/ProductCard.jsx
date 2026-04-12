@@ -1,16 +1,12 @@
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { HiOutlineShoppingBag } from 'react-icons/hi';
+import { getImageUrl } from '../services/api';
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
 
-  const serverUrl = import.meta.env.VITE_API_URL || '';
-  const imgSrc = product.image?.startsWith('http')
-    ? product.image
-    : product.image
-    ? `${serverUrl}${product.image}`
-    : '/uploads/default-product.jpg';
+  const imgSrc = getImageUrl(product.image);
 
   return (
     <div className="card group">

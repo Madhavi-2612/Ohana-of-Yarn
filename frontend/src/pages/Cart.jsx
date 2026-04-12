@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { getImageUrl } from '../services/api';
 import { HiOutlineTrash, HiMinus, HiPlus, HiOutlineShoppingBag } from 'react-icons/hi';
 import { FaWhatsapp } from 'react-icons/fa';
 
@@ -39,9 +40,7 @@ const Cart = () => {
         {/* Cart Items */}
         <div className="lg:col-span-2 space-y-4">
           {cartItems.map((item) => {
-            const imgSrc = item.image?.startsWith('http')
-              ? item.image
-              : item.image || '/uploads/default-product.jpg';
+            const imgSrc = getImageUrl(item.image);
 
             return (
               <div key={item._id} className="card p-4 flex gap-4">

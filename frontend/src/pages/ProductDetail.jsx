@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { getProductById } from '../services/api';
+import { getProductById, getImageUrl } from '../services/api';
 import { useCart } from '../context/CartContext';
 import { HiOutlineShoppingBag, HiOutlineArrowLeft, HiMinus, HiPlus } from 'react-icons/hi';
 
@@ -43,12 +43,7 @@ const ProductDetail = () => {
     );
   }
 
-  const serverUrl = import.meta.env.VITE_API_URL || '';
-  const imgSrc = product.image?.startsWith('http')
-    ? product.image
-    : product.image
-    ? `${serverUrl}${product.image}`
-    : '/uploads/default-product.jpg';
+  const imgSrc = getImageUrl(product.image);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

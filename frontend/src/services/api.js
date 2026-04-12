@@ -40,4 +40,21 @@ export const verifyPayment = (data) => API.post('/payment/verify', data);
 // WhatsApp
 export const generateWhatsAppURL = (data) => API.post('/whatsapp/generate', data);
 
+/**
+ * Consistently construct product image URLs
+ * @param {string} imagePath - The path stored in the database
+ * @returns {string} - The full URL to the image
+ */
+export const getImageUrl = (imagePath) => {
+  if (!imagePath) return '/uploads/default-product.jpg';
+  if (imagePath.startsWith('http')) return imagePath;
+
+  const serverUrl = import.meta.env.VITE_API_URL || '';
+  // Remove trailing slash from serverUrl if present, then ensure one slash before imagePath
+  const cleanServerUrl = serverUrl.replace(/\/$/, '');
+  const cleanImagePath = imagePath.startsWith('/') ? imagePath : `/${imagePath}`;
+
+  return `${cleanServerUrl}${cleanImagePath}`;
+};
+
 export default API;

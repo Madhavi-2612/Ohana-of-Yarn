@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { getProducts, deleteProduct } from '../../services/api';
+import { getProducts, deleteProduct, getImageUrl } from '../../services/api';
 import toast from 'react-hot-toast';
 import { HiOutlinePencil, HiOutlineTrash, HiOutlinePlus } from 'react-icons/hi';
 
@@ -79,7 +79,7 @@ const AdminProducts = () => {
                     <td className="p-4">
                       <div className="flex items-center gap-3">
                         <img
-                          src={product.image || 'https://placehold.co/50x50/f8e8e0/ec4899?text=🧶'}
+                          src={getImageUrl(product.image)}
                           alt={product.name}
                           className="w-12 h-12 object-cover rounded-lg bg-blush"
                           onError={(e) => {

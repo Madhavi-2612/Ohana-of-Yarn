@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
-import { getProductById, createProduct, updateProduct } from '../../services/api';
+import { getProductById, createProduct, updateProduct, getImageUrl } from '../../services/api';
 import toast from 'react-hot-toast';
 import { HiOutlineArrowLeft, HiOutlinePhotograph } from 'react-icons/hi';
 
@@ -204,7 +204,7 @@ const AdminProductForm = () => {
                   <div className="space-y-1 text-center">
                     {imagePreview ? (
                       <img
-                        src={imagePreview.startsWith('blob:') || imagePreview.startsWith('http') ? imagePreview : imagePreview}
+                        src={imagePreview.startsWith('blob:') ? imagePreview : getImageUrl(imagePreview)}
                         alt="Preview"
                         className="mx-auto h-32 object-cover rounded"
                         onError={(e) => {
