@@ -1,13 +1,16 @@
 const multer = require('multer');
-const path = require('path');
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const cloudinary = require('../config/cloudinary');
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads/');
-  },
-  filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
-    cb(null, uniqueSuffix + path.extname(file.originalname));
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'ohana_of_yarn',
+    allowed_formats: ['jpg', 'jpeg', 'png', 'webp', 'gif'],
+    public_id: (req, file) => {
+      const name = file.originalname.split('.')[0];
+      return `${Date.now()}-${name}`;
+    },
   },
 });
 

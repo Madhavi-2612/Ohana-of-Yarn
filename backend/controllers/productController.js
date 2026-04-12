@@ -41,7 +41,7 @@ exports.getProductById = async (req, res) => {
 exports.createProduct = async (req, res) => {
   try {
     const { name, description, price, category, stock, featured } = req.body;
-    const image = req.file ? `/uploads/${req.file.filename}` : '/uploads/default-product.jpg';
+    const image = req.file ? req.file.path : '/uploads/default-product.jpg';
 
     const product = await Product.create({
       name,
@@ -77,7 +77,7 @@ exports.updateProduct = async (req, res) => {
     product.featured = featured !== undefined ? (featured === 'true' || featured === true) : product.featured;
 
     if (req.file) {
-      product.image = `/uploads/${req.file.filename}`;
+      product.image = req.file.path;
     }
 
     const updated = await product.save();
