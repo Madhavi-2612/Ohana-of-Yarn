@@ -49,8 +49,14 @@ export const getImageUrl = (imagePath) => {
   if (!imagePath) return '/uploads/default-product.jpg';
   if (imagePath.startsWith('http')) return imagePath;
 
-  const serverUrl = import.meta.env.VITE_API_URL || '';
-  // Remove trailing slash from serverUrl if present, then ensure one slash before imagePath
+  const serverUrl = import.meta.env.VITE_API_URL || 'https://ohana-of-yarn.onrender.com';
+  
+  // Log once in development/production if env var is missing
+  if (!import.meta.env.VITE_API_URL && !window._imageLogWarn) {
+    console.warn('VITE_API_URL is missing! Falling back to hardcoded Render URL for images.');
+    window._imageLogWarn = true;
+  }
+
   const cleanServerUrl = serverUrl.replace(/\/$/, '');
   const cleanImagePath = imagePath.startsWith('/') ? imagePath : `/${imagePath}`;
 

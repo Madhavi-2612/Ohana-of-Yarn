@@ -27,7 +27,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Static files for uploads
+// Using path.resolve and adding logging to ensure it hits correctly
 app.use('/uploads', express.static(uploadsDir));
+
+// Debug route to see if images exist on backend (Admin only in production ideally)
+app.get('/api/debug-uploads', (req, res) => {
+  fs.readdir(uploadsDir, (err, files) => {
+    if (err) return res.status(500).json({ error: err.message });
+    res.json({ count: files.length, files });
+  });
+});
 
 // API Routes
 app.use('/api/auth', authRoutes);
