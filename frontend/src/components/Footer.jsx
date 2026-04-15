@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { HiOutlineHeart } from 'react-icons/hi';
+import logo from '../assets/logo.png';
 
 const Footer = () => {
   return (
@@ -8,8 +9,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
-              <span className="text-3xl">🧶</span>
+            <div className="flex items-center space-x-2 mb-4 group">
+              <img src={logo} alt="Ohana of Yarn Logo" className="w-10 h-10 object-contain rounded-full border-2 border-primary-200" />
               <span className="text-2xl font-display font-bold text-gradient">
                 Ohana of Yarn
               </span>

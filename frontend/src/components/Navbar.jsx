@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 import { HiOutlineShoppingBag, HiOutlineMenu, HiOutlineX, HiOutlineUser } from 'react-icons/hi';
+import logo from '../assets/logo.png';
 
 const Navbar = () => {
   const { user, logout } = useAuth();
@@ -27,7 +28,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
-            <span className="text-2xl">🧶</span>
+            <img src={logo} alt="Ohana of Yarn Logo" className="w-10 h-10 object-contain rounded-full border-2 border-primary-200" />
             <span className="text-xl font-display font-bold text-gradient">
               Ohana of Yarn
             </span>

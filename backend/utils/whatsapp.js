@@ -1,5 +1,5 @@
 const generateWhatsAppURL = (items, totalAmount, phone) => {
-  const whatsappPhone = phone || process.env.WHATSAPP_PHONE || '919999999999';
+  const whatsappPhone = phone || process.env.WHATSAPP_PHONE || '919498431171';
 
   let message = '🧶 *New Order from Crochet Shop*\n\n';
   message += '📦 *Order Items:*\n';
