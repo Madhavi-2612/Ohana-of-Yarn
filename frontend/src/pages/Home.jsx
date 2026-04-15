@@ -83,8 +83,8 @@ const Home = () => {
             <div className="relative hidden md:block">
               <div className="w-[400px] h-[400px] mx-auto relative">
                 <div className="absolute inset-0 gradient-primary rounded-full opacity-20 blur-2xl animate-float" />
-                <div className="absolute inset-4 bg-white/60 backdrop-blur-sm rounded-full flex items-center justify-center shadow-2xl">
-                  <img src={logo} alt="Ohana of Yarn" className="w-[300px] h-[300px] object-contain animate-float" />
+                <div className="absolute inset-4 bg-white/60 backdrop-blur-sm rounded-full overflow-hidden flex items-center justify-center shadow-2xl">
+                  <img src={logo} alt="Ohana of Yarn" className="w-full h-full object-cover animate-float" />
                 </div>
               </div>
             </div>
