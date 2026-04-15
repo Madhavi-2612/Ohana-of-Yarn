@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
 import { getProducts } from '../services/api';
 import { HiOutlineSparkles, HiOutlineHeart, HiOutlineTruck, HiOutlineShieldCheck } from 'react-icons/hi';
+import logo from '../assets/logo.png';
 
 const Home = () => {
   const [featured, setFeatured] = useState([]);
@@ -12,7 +13,7 @@ const Home = () => {
     const fetchFeatured = async () => {
       try {
         const { data } = await getProducts({ featured: 'true' });
-        setFeatured(data.slice(0, 4));
+        setFeatured(data.slice(0, 5));
       } catch (err) {
         console.error(err);
       } finally {
@@ -83,7 +84,7 @@ const Home = () => {
               <div className="w-[400px] h-[400px] mx-auto relative">
                 <div className="absolute inset-0 gradient-primary rounded-full opacity-20 blur-2xl animate-float" />
                 <div className="absolute inset-4 bg-white/60 backdrop-blur-sm rounded-full flex items-center justify-center shadow-2xl">
-                  <span className="text-[120px] animate-float">🧶</span>
+                  <img src={logo} alt="Ohana of Yarn" className="w-[300px] h-[300px] object-contain animate-float" />
                 </div>
               </div>
             </div>
