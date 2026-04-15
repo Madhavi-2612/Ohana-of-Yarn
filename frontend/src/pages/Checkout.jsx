@@ -94,7 +94,7 @@ const Checkout = () => {
           email: user?.email || '',
           contact: address.phone,
         },
-        theme: { color: '#ec4899' },
+        theme: { color: '#2e8ecc' },
       };
 
       const razorpay = new window.Razorpay(options);

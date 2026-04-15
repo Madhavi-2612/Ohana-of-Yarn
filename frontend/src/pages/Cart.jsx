@@ -49,7 +49,7 @@ const Cart = () => {
                   alt={item.name}
                   className="w-24 h-24 object-cover rounded-xl bg-blush"
                   onError={(e) => {
-                    e.target.src = 'https://placehold.co/100x100/f8e8e0/ec4899?text=🧶';
+                    e.target.src = 'https://placehold.co/100x100/f0e4d4/2e8ecc?text=🧶';
                   }}
                 />
                 <div className="flex-1 min-w-0">

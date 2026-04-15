@@ -54,11 +54,11 @@
 
 @layer utilities {
   .gradient-hero {
-    background: linear-gradient(135deg, #fdf2f8 0%, #f8e8e0 30%, #f0f5f0 60%, #f5f0fa 100%);
+    background: linear-gradient(135deg, #f0f7fc 0%, #f0e4d4 30%, #fdf8f2 60%, #faf3f4 100%);
   }
 
   .gradient-primary {
-    background: linear-gradient(135deg, #ec4899 0%, #a06dce 100%);
+    background: linear-gradient(135deg, #2e8ecc 0%, #b85466 100%);
   }
 
   .text-gradient {

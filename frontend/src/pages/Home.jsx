@@ -30,12 +30,12 @@ const Home = () => {
   ];
 
   const categories = [
-    { name: 'Amigurumi', emoji: '🧸', color: 'from-pink-200 to-pink-100' },
-    { name: 'Bags', emoji: '👜', color: 'from-lavender-200 to-lavender-100' },
-    { name: 'Clothing', emoji: '👗', color: 'from-sage-200 to-sage-100' },
-    { name: 'Home Decor', emoji: '🏡', color: 'from-yellow-200 to-yellow-100' },
-    { name: 'Accessories', emoji: '🎀', color: 'from-blue-200 to-blue-100' },
-    { name: 'Baby Items', emoji: '👶', color: 'from-green-200 to-green-100' },
+    { name: 'Amigurumi', emoji: '🧸', color: 'from-sky-200 to-sky-100' },
+    { name: 'Bags', emoji: '👜', color: 'from-amber-200 to-amber-100' },
+    { name: 'Clothing', emoji: '👗', color: 'from-rose-200 to-rose-100' },
+    { name: 'Home Decor', emoji: '🏡', color: 'from-teal-200 to-teal-100' },
+    { name: 'Accessories', emoji: '🎀', color: 'from-orange-200 to-orange-100' },
+    { name: 'Baby Items', emoji: '👶', color: 'from-cyan-200 to-cyan-100' },
   ];
 
   return (
@@ -190,7 +190,7 @@ const Home = () => {
                 href={`https://wa.me/${import.meta.env.VITE_WHATSAPP_PHONE || '919999999999'}?text=${encodeURIComponent('Hi! I\'d like to discuss a custom crochet order.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block mt-6 bg-white text-primary-600 font-bold py-3 px-8 rounded-xl 
+                className="inline-block mt-6 bg-white text-primary-700 font-bold py-3 px-8 rounded-xl 
                   hover:shadow-2xl hover:scale-105 transition-all duration-300"
               >
                 💬 Chat on WhatsApp

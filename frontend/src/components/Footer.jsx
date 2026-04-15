@@ -13,6 +13,7 @@ const Footer = () => {
               <img src={logo} alt="Ohana of Yarn Logo" className="w-10 h-10 object-contain rounded-full border-2 border-primary-200" />
               <span className="text-2xl font-display font-bold text-gradient">
                 Ohana of Yarn
+
               </span>
             </div>
             <p className="text-gray-500 max-w-md leading-relaxed">

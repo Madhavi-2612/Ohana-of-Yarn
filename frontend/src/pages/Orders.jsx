@@ -80,7 +80,7 @@ const Orders = () => {
                       alt={item.name}
                       className="w-14 h-14 object-cover rounded-lg bg-blush"
                       onError={(e) => {
-                        e.target.src = 'https://placehold.co/60x60/f8e8e0/ec4899?text=🧶';
+                        e.target.src = 'https://placehold.co/60x60/f0e4d4/2e8ecc?text=🧶';
                       }}
                     />
                     <div className="flex-1 min-w-0">
@@ -92,8 +92,6 @@ const Orders = () => {
                     </p>
                   </div>
                 ))}
-              </div>
-
               </div>
 
               {(order.isGift || order.customizationNote) && (

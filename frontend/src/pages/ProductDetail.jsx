@@ -64,7 +64,7 @@ const ProductDetail = () => {
               alt={product.name}
               className="w-full h-full object-cover"
               onError={(e) => {
-                e.target.src = 'https://placehold.co/600x600/f8e8e0/ec4899?text=🧶';
+                e.target.src = 'https://placehold.co/600x600/f0e4d4/2e8ecc?text=🧶';
               }}
             />
           </div>
