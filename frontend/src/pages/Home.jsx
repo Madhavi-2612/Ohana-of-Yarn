@@ -48,7 +48,7 @@ const Home = () => {
     {
       name: 'Madhu',
       place: 'Vijayawada',
-      message: 'Ordered a custom amigurumi for my daughter and she loves it. The craftsmanship is top-notch and the delivery was very fast.',
+      message: 'Ordered a custom Bag for my self. The craftsmanship is top-notch and the delivery was very fast.',
     },
     {
       name: 'Mukesh',
