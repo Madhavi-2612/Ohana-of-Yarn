@@ -39,6 +39,24 @@ const Home = () => {
     { name: 'Skirt', emoji: '👗', color: 'from-cyan-200 to-cyan-100' },
   ];
 
+  const reviews = [
+    {
+      name: 'Anjali Sharma',
+      place: 'Mumbai',
+      message: 'The crochet bag I ordered is absolutely stunning! The quality of the yarn and the intricate design exceeded my expectations. Highly recommend!',
+    },
+    {
+      name: 'Rahul Verma',
+      place: 'Bangalore',
+      message: 'Ordered a custom amigurumi for my daughter and she loves it. The craftsmanship is top-notch and the delivery was very fast.',
+    },
+    {
+      name: 'Priya Iyer',
+      place: 'Chennai',
+      message: 'Beautiful handmade pieces. You can really feel the love and care put into each item. Will definitely be ordering more!',
+    },
+  ];
+
   return (
     <div>
       {/* Hero Section */}
@@ -169,6 +187,45 @@ const Home = () => {
             <Link to="/products" className="btn-outline text-lg py-3 px-8">
               View All Products →
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Reviews Section */}
+      <section className="py-20 bg-primary-50/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900">
+              Customer <span className="text-gradient">Reviews</span>
+            </h2>
+            <p className="text-gray-500 mt-3 italic">Real stories from our happy yarn family</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {reviews.map((review, i) => (
+              <div
+                key={i}
+                className="card p-8 relative hover:scale-[1.02] transition-all duration-300 group"
+              >
+                <div className="absolute top-4 right-6 text-primary-200 text-6xl font-serif opacity-50 group-hover:text-primary-300 transition-colors">
+                  &ldquo;
+                </div>
+                <p className="text-gray-600 relative z-10 leading-relaxed italic mb-8">
+                  {review.message}
+                </p>
+                <div className="mt-auto pt-6 border-t border-primary-50 flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary-400 to-lavender-500 flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                    {review.name.charAt(0)}
+                  </div>
+                  <div>
+                    <h4 className="font-display font-bold text-gray-800">{review.name}</h4>
+                    <p className="text-xs text-primary-500 font-medium uppercase tracking-wider">
+                      📍 {review.place}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
