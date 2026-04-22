@@ -34,7 +34,7 @@ const orderSchema = new mongoose.Schema(
     },
     paymentMethod: {
       type: String,
-      enum: ['razorpay', 'whatsapp', 'cod'],
+      enum: ['razorpay', 'whatsapp'],
       required: true,
     },
     paymentStatus: {

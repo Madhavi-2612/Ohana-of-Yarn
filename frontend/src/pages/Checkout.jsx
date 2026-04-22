@@ -106,38 +106,6 @@ const Checkout = () => {
     }
   };
 
-  const handleCOD = async () => {
-    if (!validateAddress()) {
-      toast.error('Please fill all shipping details');
-      return;
-    }
-
-    setLoading(true);
-    try {
-      const orderData = {
-        items: cartItems.map((item) => ({
-          product: item._id,
-          name: item.name,
-          price: item.price,
-          quantity: item.quantity,
-          image: item.image,
-        })),
-        totalAmount,
-        shippingAddress: address,
-        paymentMethod: 'cod',
-        ...giftData,
-      };
-
-      await createOrder(orderData);
-      clearCart();
-      toast.success('Order placed successfully!');
-      navigate('/orders');
-    } catch (err) {
-      toast.error('Order failed. Please try again.');
-    } finally {
-      setLoading(false);
-    }
-  };
 
   if (cartItems.length === 0) {
     navigate('/cart');
@@ -226,29 +194,17 @@ const Checkout = () => {
                 🎁 Gift & Customization
               </h2>
               <div className="space-y-4">
-                <label className="flex items-center gap-2 cursor-pointer group">
-                  <input
-                    type="checkbox"
-                    checked={giftData.isGift}
-                    onChange={(e) => setGiftData({ ...giftData, isGift: e.target.checked })}
-                    className="w-5 h-5 rounded border-primary-200 text-primary-600 focus:ring-primary-500"
+                <div>
+                  <label className="block text-sm font-medium text-gray-600 mb-1">
+                    Gift Message (Optional)
+                  </label>
+                  <textarea
+                    value={giftData.giftMessage}
+                    onChange={(e) => setGiftData({ ...giftData, giftMessage: e.target.value, isGift: e.target.value.trim() !== '' })}
+                    className="input-field min-h-[100px] py-3"
+                    placeholder="Enter the message you want us to include with the gift..."
                   />
-                  <span className="text-gray-700 group-hover:text-primary-600 transition-colors">
-                    Is this a gift? (Add a free gift message)
-                  </span>
-                </label>
-
-                {giftData.isGift && (
-                  <div className="animate-fade-in">
-                    <label className="block text-sm font-medium text-gray-600 mb-1">Gift Message</label>
-                    <textarea
-                      value={giftData.giftMessage}
-                      onChange={(e) => setGiftData({ ...giftData, giftMessage: e.target.value })}
-                      className="input-field min-h-[100px] py-3"
-                      placeholder="Enter the message you want us to include with the gift..."
-                    />
-                  </div>
-                )}
+                </div>
 
                 <div>
                   <label className="block text-sm font-medium text-gray-600 mb-1">
@@ -300,13 +256,6 @@ const Checkout = () => {
                 className="btn-primary w-full disabled:opacity-50"
               >
                 {loading ? 'Processing...' : '💳 Pay with Razorpay'}
-              </button>
-              <button
-                onClick={handleCOD}
-                disabled={loading}
-                className="btn-outline w-full disabled:opacity-50"
-              >
-                📦 Cash on Delivery
               </button>
             </div>
           </div>
