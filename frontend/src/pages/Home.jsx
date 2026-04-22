@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getProducts, getReviews, createReview } from '../services/api';
+import ProductCard from '../components/ProductCard';
 import { HiOutlineSparkles, HiOutlineHeart, HiOutlineTruck, HiOutlineShieldCheck, HiStar } from 'react-icons/hi';
 import toast from 'react-hot-toast';
 import logo from '../assets/logo.png';
