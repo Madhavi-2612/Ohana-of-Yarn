@@ -42,7 +42,7 @@ const Navbar = () => {
               <Link
                 key={link.to}
                 to={link.to}
-                className="text-gray-600 hover:text-primary-600 font-medium transition-colors duration-200"
+                className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-200"
               >
                 {link.label}
               </Link>
@@ -52,26 +52,26 @@ const Navbar = () => {
               <>
                 <Link
                   to="/orders"
-                  className="text-gray-600 hover:text-primary-600 font-medium transition-colors duration-200"
+                  className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-200"
                 >
                   My Orders
                 </Link>
                 {user.isAdmin && (
                   <Link
                     to="/admin"
-                    className="text-gray-600 hover:text-primary-600 font-medium transition-colors duration-200"
+                    className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-200"
                   >
                     Admin
                   </Link>
                 )}
                 <div className="flex items-center space-x-3">
-                  <span className="text-sm text-gray-500 flex items-center gap-1">
+                  <span className="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-1">
                     <HiOutlineUser className="w-4 h-4" />
                     {user.name}
                   </span>
                   <button
                     onClick={handleLogout}
-                    className="text-sm text-gray-500 hover:text-primary-600 transition-colors"
+                    className="text-sm text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                   >
                     Logout
                   </button>
