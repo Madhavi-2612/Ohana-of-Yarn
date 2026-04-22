@@ -41,18 +41,18 @@ const Home = () => {
 
   const reviews = [
     {
-      name: 'Anjali Sharma',
-      place: 'Mumbai',
+      name: 'Komal',
+      place: 'Delhi',
       message: 'The crochet bag I ordered is absolutely stunning! The quality of the yarn and the intricate design exceeded my expectations. Highly recommend!',
     },
     {
-      name: 'Rahul Verma',
-      place: 'Bangalore',
+      name: 'Madhu',
+      place: 'Vijayawada',
       message: 'Ordered a custom amigurumi for my daughter and she loves it. The craftsmanship is top-notch and the delivery was very fast.',
     },
     {
-      name: 'Priya Iyer',
-      place: 'Chennai',
+      name: 'Mukesh',
+      place: 'Hyderabad',
       message: 'Beautiful handmade pieces. You can really feel the love and care put into each item. Will definitely be ordering more!',
     },
   ];
