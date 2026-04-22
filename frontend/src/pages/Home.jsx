@@ -1,27 +1,49 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import ProductCard from '../components/ProductCard';
-import { getProducts } from '../services/api';
-import { HiOutlineSparkles, HiOutlineHeart, HiOutlineTruck, HiOutlineShieldCheck } from 'react-icons/hi';
+import { getProducts, getReviews, createReview } from '../services/api';
+import { HiOutlineSparkles, HiOutlineHeart, HiOutlineTruck, HiOutlineShieldCheck, HiStar } from 'react-icons/hi';
+import toast from 'react-hot-toast';
 import logo from '../assets/logo.png';
 
 const Home = () => {
   const [featured, setFeatured] = useState([]);
+  const [reviewsList, setReviewsList] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [submittingReview, setSubmittingReview] = useState(false);
+  const [reviewForm, setReviewForm] = useState({ name: '', place: '', message: '', rating: 5 });
 
   useEffect(() => {
-    const fetchFeatured = async () => {
+    const fetchData = async () => {
       try {
-        const { data } = await getProducts({ featured: 'true' });
-        setFeatured(data.slice(0, 5));
+        const [productsRes, reviewsRes] = await Promise.all([
+          getProducts({ featured: 'true' }),
+          getReviews()
+        ]);
+        setFeatured(productsRes.data.slice(0, 5));
+        setReviewsList(reviewsRes.data.slice(0, 6)); // Show latest 6 reviews
       } catch (err) {
         console.error(err);
       } finally {
         setLoading(false);
       }
     };
-    fetchFeatured();
+    fetchData();
   }, []);
+
+  const handleReviewSubmit = async (e) => {
+    e.preventDefault();
+    setSubmittingReview(true);
+    try {
+      const { data } = await createReview(reviewForm);
+      setReviewsList([data, ...reviewsList].slice(0, 6));
+      setReviewForm({ name: '', place: '', message: '', rating: 5 });
+      toast.success('Thank you for your lovely review! 🧶');
+    } catch (err) {
+      toast.error('Could not submit review. Please try again.');
+    } finally {
+      setSubmittingReview(false);
+    }
+  };
 
   const features = [
     { icon: HiOutlineHeart, title: 'Handmade with Love', desc: 'Every piece is crafted with care and attention to detail' },
@@ -39,21 +61,24 @@ const Home = () => {
     { name: 'Skirt', emoji: '👗', color: 'from-cyan-200 to-cyan-100' },
   ];
 
-  const reviews = [
+  const reviews = reviewsList.length > 0 ? reviewsList : [
     {
       name: 'Komal',
       place: 'Delhi',
       message: 'The crochet bag I ordered is absolutely stunning! The quality of the yarn and the intricate design exceeded my expectations. Highly recommend!',
+      rating: 5
     },
     {
       name: 'Madhu',
       place: 'Vijayawada',
       message: 'Ordered a custom Cap for my self. The craftsmanship is top-notch and the delivery was very fast.',
+      rating: 5
     },
     {
       name: 'Mukesh',
       place: 'Hyderabad',
       message: 'Beautiful handmade pieces. You can really feel the love and care put into each item. Will definitely be ordering more!',
+      rating: 5
     },
   ];
 
@@ -220,10 +245,15 @@ const Home = () => {
                 <div className="absolute top-4 right-6 text-primary-200 dark:text-primary-900/40 text-6xl font-serif opacity-50 group-hover:text-primary-300 transition-colors">
                   &ldquo;
                 </div>
+                <div className="flex gap-1 mb-4">
+                  {[...Array(review.rating || 5)].map((_, idx) => (
+                    <HiStar key={idx} className="w-4 h-4 text-amber-400" />
+                  ))}
+                </div>
                 <p className="text-gray-600 dark:text-gray-300 relative z-10 leading-relaxed italic mb-8">
                   {review.message}
                 </p>
-                <div className="mt-auto pt-6 border-t border-primary-50 flex items-center gap-4">
+                <div className="mt-auto pt-6 border-t border-primary-50 dark:border-gray-800 flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary-400 to-lavender-500 flex items-center justify-center text-white font-bold text-xl shadow-lg">
                     {review.name.charAt(0)}
                   </div>
@@ -236,6 +266,67 @@ const Home = () => {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Add Review Form */}
+          <div className="mt-16 max-w-2xl mx-auto">
+            <div className="card p-8 border-2 border-primary-100 dark:border-primary-900/30">
+              <h3 className="text-2xl font-display font-bold text-gray-900 dark:text-white mb-6 text-center">
+                Share Your <span className="text-gradient">Experience</span>
+              </h3>
+              <form onSubmit={handleReviewSubmit} className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <input
+                    type="text"
+                    placeholder="Your Name"
+                    required
+                    className="input-field"
+                    value={reviewForm.name}
+                    onChange={(e) => setReviewForm({ ...reviewForm, name: e.target.value })}
+                  />
+                  <input
+                    type="text"
+                    placeholder="Your Location (e.g. Delhi)"
+                    required
+                    className="input-field"
+                    value={reviewForm.place}
+                    onChange={(e) => setReviewForm({ ...reviewForm, place: e.target.value })}
+                  />
+                </div>
+                <div className="flex items-center gap-3 justify-center py-2">
+                  <span className="text-sm text-gray-500 dark:text-gray-400">Rating:</span>
+                  <div className="flex gap-1">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <button
+                        key={star}
+                        type="button"
+                        onClick={() => setReviewForm({ ...reviewForm, rating: star })}
+                        className={`text-2xl transition-colors ${
+                          reviewForm.rating >= star ? 'text-amber-400' : 'text-gray-300 dark:text-gray-700'
+                        }`}
+                      >
+                        <HiStar />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <textarea
+                  placeholder="Tell us about your order..."
+                  required
+                  rows="4"
+                  className="input-field resize-none"
+                  value={reviewForm.message}
+                  onChange={(e) => setReviewForm({ ...reviewForm, message: e.target.value })}
+                />
+                <button
+                  type="submit"
+                  disabled={submittingReview}
+                  className="btn-primary w-full py-3 text-lg disabled:opacity-50"
+                >
+                  {submittingReview ? 'Submitting...' : 'Submit Review ✨'}
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </section>

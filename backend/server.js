@@ -12,6 +12,7 @@ const productRoutes = require('./routes/products');
 const orderRoutes = require('./routes/orders');
 const paymentRoutes = require('./routes/payment');
 const whatsappRoutes = require('./routes/whatsapp');
+const reviewRoutes = require('./routes/reviewRoutes');
 
 const app = express();
 
@@ -44,6 +45,7 @@ app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/payment', paymentRoutes);
 app.use('/api/whatsapp', whatsappRoutes);
+app.use('/api/reviews', reviewRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {

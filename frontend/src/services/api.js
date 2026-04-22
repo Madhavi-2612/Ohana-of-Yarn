@@ -40,6 +40,10 @@ export const verifyPayment = (data) => API.post('/payment/verify', data);
 // WhatsApp
 export const generateWhatsAppURL = (data) => API.post('/whatsapp/generate', data);
 
+// Reviews
+export const getReviews = () => API.get('/reviews');
+export const createReview = (data) => API.post('/reviews', data);
+
 /**
  * Consistently construct product image URLs
  * @param {string} imagePath - The path stored in the database
