@@ -35,7 +35,7 @@ const Register = () => {
         <div className="text-center mb-8">
           <span className="text-5xl">✨</span>
           <h1 className="text-3xl font-display font-bold text-gray-900 dark:text-white mt-4">
-            Create <span className="text-gradient">Account</span>
+            Create Account
           </h1>
           <p className="text-gray-500 dark:text-gray-400 mt-2">Join our crochet community</p>
         </div>

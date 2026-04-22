@@ -36,9 +36,8 @@ const Login = () => {
     <div className="min-h-[80vh] flex items-center justify-center px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <span className="text-5xl">🧶</span>
           <h1 className="text-3xl font-display font-bold text-gray-900 dark:text-white mt-4">
-            Welcome <span className="text-gradient">Back</span>
+            Welcome Back
           </h1>
           <p className="text-gray-500 dark:text-gray-400 mt-2">Sign in to your account</p>
         </div>
