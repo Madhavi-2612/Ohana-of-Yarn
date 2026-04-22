@@ -48,7 +48,7 @@ const Home = () => {
     {
       name: 'Madhu',
       place: 'Vijayawada',
-      message: 'Ordered a custom Bag for my self. The craftsmanship is top-notch and the delivery was very fast.',
+      message: 'Ordered a custom Cap for my self. The craftsmanship is top-notch and the delivery was very fast.',
     },
     {
       name: 'Mukesh',
@@ -70,7 +70,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="inline-block badge bg-primary-100 text-primary-600 mb-4">
+              <span className="inline-block badge bg-primary-100 text-primary-600 dark:bg-primary-900/40 dark:text-primary-300 mb-4 border border-transparent dark:border-primary-800/50">
                 ✨ Handcrafted Creations
               </span>
               <h1 className="text-4xl md:text-6xl font-display font-bold text-gray-900 dark:text-white leading-tight">
@@ -78,7 +78,7 @@ const Home = () => {
                 <span className="text-gradient">Crochet</span>{' '}
                 Pieces Made with Love
               </h1>
-              <p className="text-lg text-gray-600 dark:text-gray-300 mt-6 max-w-lg leading-relaxed">
+              <p className="text-lg text-gray-600 dark:text-gray-200 mt-6 max-w-lg leading-relaxed">
                 Discover our collection of handmade crochet items — from adorable
                 amigurumi to cozy accessories. Each piece tells a story of
                 craftsmanship and care.
@@ -102,13 +102,13 @@ const Home = () => {
               <div className="relative w-[450px] h-[450px] flex items-center justify-center">
                 {/* Glow Effect */}
                 <div className="absolute inset-0 gradient-primary rounded-full opacity-30 blur-3xl animate-pulse" />
-                
+
                 {/* Main Circle Container */}
                 <div className="w-full h-full rounded-full overflow-hidden shadow-2xl border-4 border-white/20 dark:border-gray-700/30 animate-float">
-                  <img 
-                    src={logo} 
-                    alt="Ohana of Yarn" 
-                    className="w-full h-full object-cover" 
+                  <img
+                    src={logo}
+                    alt="Ohana of Yarn"
+                    className="w-full h-full object-cover"
                     onError={(e) => {
                       e.target.src = 'https://placehold.co/400x400/f0e4d4/2e8ecc?text=🧶';
                     }}
