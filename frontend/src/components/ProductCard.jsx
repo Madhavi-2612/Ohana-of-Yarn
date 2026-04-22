@@ -11,7 +11,7 @@ const ProductCard = ({ product }) => {
   return (
     <div className="card group">
       <Link to={`/products/${product._id}`} className="block">
-        <div className="relative overflow-hidden aspect-square bg-blush">
+        <div className="relative overflow-hidden aspect-square bg-blush dark:bg-gray-700">
           <img
             src={imgSrc}
             alt={product.name}
@@ -40,11 +40,11 @@ const ProductCard = ({ product }) => {
           {product.category}
         </span>
         <Link to={`/products/${product._id}`}>
-          <h3 className="font-display font-semibold text-gray-800 mt-1 group-hover:text-primary-600 transition-colors">
+          <h3 className="font-display font-semibold text-gray-800 dark:text-gray-100 mt-1 group-hover:text-primary-600 transition-colors">
             {product.name}
           </h3>
         </Link>
-        <p className="text-gray-500 text-sm mt-1 line-clamp-2">
+        <p className="text-gray-500 dark:text-gray-400 text-sm mt-1 line-clamp-2">
           {product.description}
         </p>
 

@@ -2,12 +2,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
-import { HiOutlineShoppingBag, HiOutlineMenu, HiOutlineX, HiOutlineUser } from 'react-icons/hi';
+import { useTheme } from '../context/ThemeContext';
+import { HiOutlineShoppingBag, HiOutlineMenu, HiOutlineX, HiOutlineUser, HiOutlineSun, HiOutlineMoon } from 'react-icons/hi';
 import logo from '../assets/logo.png';
 
 const Navbar = () => {
   const { user, logout } = useAuth();
   const { totalItems } = useCart();
+  const { darkMode, toggleDarkMode } = useTheme();
   const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -84,8 +86,16 @@ const Navbar = () => {
               </Link>
             )}
 
+            <button
+              onClick={toggleDarkMode}
+              className="p-2 rounded-lg text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800 transition-colors"
+              aria-label="Toggle theme"
+            >
+              {darkMode ? <HiOutlineSun className="w-6 h-6" /> : <HiOutlineMoon className="w-6 h-6" />}
+            </button>
+
             <Link to="/cart" className="relative group">
-              <HiOutlineShoppingBag className="w-6 h-6 text-gray-600 group-hover:text-primary-600 transition-colors" />
+              <HiOutlineShoppingBag className="w-6 h-6 text-gray-600 group-hover:text-primary-600 dark:text-gray-300 transition-colors" />
               {totalItems > 0 && (
                 <span className="absolute -top-2 -right-2 bg-primary-500 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center animate-pulse">
                   {totalItems}
@@ -96,8 +106,14 @@ const Navbar = () => {
 
           {/* Mobile controls */}
           <div className="md:hidden flex items-center space-x-4">
+            <button
+              onClick={toggleDarkMode}
+              className="p-2 rounded-lg text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800 transition-colors"
+            >
+              {darkMode ? <HiOutlineSun className="w-6 h-6" /> : <HiOutlineMoon className="w-6 h-6" />}
+            </button>
             <Link to="/cart" className="relative">
-              <HiOutlineShoppingBag className="w-6 h-6 text-gray-600" />
+              <HiOutlineShoppingBag className="w-6 h-6 text-gray-600 dark:text-gray-300" />
               {totalItems > 0 && (
                 <span className="absolute -top-2 -right-2 bg-primary-500 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
                   {totalItems}

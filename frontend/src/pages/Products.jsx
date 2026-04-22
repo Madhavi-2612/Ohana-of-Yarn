@@ -63,10 +63,10 @@ const Products = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Header */}
       <div className="text-center mb-10">
-        <h1 className="text-3xl md:text-4xl font-display font-bold text-gray-900">
+        <h1 className="text-3xl md:text-4xl font-display font-bold text-gray-900 dark:text-white">
           Our <span className="text-gradient">Collection</span>
         </h1>
-        <p className="text-gray-500 mt-2">Explore our handcrafted crochet products</p>
+        <p className="text-gray-500 dark:text-gray-400 mt-2">Explore our handcrafted crochet products</p>
       </div>
 
       {/* Search bar */}
@@ -98,10 +98,10 @@ const Products = () => {
         >
           <div className="card p-6 sticky top-20">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-display font-semibold text-gray-800">Filters</h3>
+              <h3 className="font-display font-semibold text-gray-800 dark:text-gray-100">Filters</h3>
               <button
                 onClick={clearFilters}
-                className="text-xs text-primary-500 hover:text-primary-700 flex items-center gap-1"
+                className="text-xs text-primary-500 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 flex items-center gap-1"
               >
                 <HiOutlineX className="w-3 h-3" /> Clear
               </button>
@@ -109,7 +109,7 @@ const Products = () => {
 
             {/* Category */}
             <div className="mb-6">
-              <h4 className="text-sm font-semibold text-gray-600 mb-3 uppercase tracking-wider">
+              <h4 className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-3 uppercase tracking-wider">
                 Categories
               </h4>
               <div className="space-y-4">
@@ -122,8 +122,8 @@ const Products = () => {
                   }}
                   className={`block w-full text-left px-3 py-2 rounded-lg text-sm transition-all ${
                     category === 'All'
-                      ? 'bg-primary-100 text-primary-700 font-semibold'
-                      : 'text-gray-600 hover:bg-primary-50'
+                      ? 'bg-primary-100 text-primary-700 font-semibold dark:bg-primary-900/30 dark:text-primary-300'
+                      : 'text-gray-600 hover:bg-primary-50 dark:text-gray-400 dark:hover:bg-gray-700/50'
                   }`}
                 >
                   All Products
@@ -148,8 +148,8 @@ const Products = () => {
                       }}
                       className={`block w-full text-left px-3 py-2 rounded-lg text-sm transition-all font-semibold ${
                         category === mainCat && !subcategory
-                          ? 'text-primary-600 bg-primary-50/50'
-                          : 'text-gray-800 hover:text-primary-600'
+                          ? 'text-primary-600 bg-primary-50/50 dark:text-primary-400 dark:bg-primary-900/20'
+                          : 'text-gray-800 hover:text-primary-600 dark:text-gray-200 dark:hover:text-primary-400'
                       }`}
                     >
                       {mainCat}
@@ -168,8 +168,8 @@ const Products = () => {
                           }}
                           className={`block w-full text-left px-3 py-1.5 rounded-md text-xs transition-all ${
                             subcategory === sub
-                              ? 'bg-primary-100 text-primary-700 font-medium'
-                              : 'text-gray-500 hover:bg-primary-50 hover:text-primary-600'
+                              ? 'bg-primary-100 text-primary-700 font-medium dark:bg-primary-900/30 dark:text-primary-300'
+                              : 'text-gray-500 hover:bg-primary-50 hover:text-primary-600 dark:text-gray-400 dark:hover:bg-gray-700/50'
                           }`}
                         >
                           {sub}
@@ -183,7 +183,7 @@ const Products = () => {
 
             {/* Price range */}
             <div>
-              <h4 className="text-sm font-semibold text-gray-600 mb-3 uppercase tracking-wider">
+              <h4 className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-3 uppercase tracking-wider">
                 Price Range (₹)
               </h4>
               <div className="flex gap-2">

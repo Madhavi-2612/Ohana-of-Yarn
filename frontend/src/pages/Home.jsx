@@ -73,12 +73,12 @@ const Home = () => {
               <span className="inline-block badge bg-primary-100 text-primary-600 mb-4">
                 ✨ Handcrafted Creations
               </span>
-              <h1 className="text-4xl md:text-6xl font-display font-bold text-gray-900 leading-tight">
+              <h1 className="text-4xl md:text-6xl font-display font-bold text-gray-900 dark:text-white leading-tight">
                 Beautiful{' '}
                 <span className="text-gradient">Crochet</span>{' '}
                 Pieces Made with Love
               </h1>
-              <p className="text-lg text-gray-600 mt-6 max-w-lg leading-relaxed">
+              <p className="text-lg text-gray-600 dark:text-gray-300 mt-6 max-w-lg leading-relaxed">
                 Discover our collection of handmade crochet items — from adorable
                 amigurumi to cozy accessories. Each piece tells a story of
                 craftsmanship and care.
@@ -101,7 +101,7 @@ const Home = () => {
             <div className="relative hidden md:block">
               <div className="w-[400px] h-[400px] mx-auto relative">
                 <div className="absolute inset-0 gradient-primary rounded-full opacity-20 blur-2xl animate-float" />
-                <div className="absolute inset-4 bg-white/60 backdrop-blur-sm rounded-full overflow-hidden flex items-center justify-center shadow-2xl">
+                <div className="absolute inset-4 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-full overflow-hidden flex items-center justify-center shadow-2xl border border-white/20">
                   <img src={logo} alt="Ohana of Yarn" className="w-full h-full object-cover animate-float" />
                 </div>
               </div>
@@ -111,17 +111,17 @@ const Home = () => {
       </section>
 
       {/* Features */}
-      <section className="py-16 bg-white/60">
+      <section className="py-16 bg-white/60 dark:bg-gray-900/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {features.map((feat) => (
               <div
                 key={feat.title}
-                className="text-center p-6 rounded-2xl hover:bg-white hover:shadow-lg transition-all duration-300 group"
+                className="text-center p-6 rounded-2xl hover:bg-white dark:hover:bg-gray-800 hover:shadow-lg transition-all duration-300 group border border-transparent hover:border-primary-100/50 dark:hover:border-gray-700"
               >
                 <feat.icon className="w-10 h-10 mx-auto text-primary-500 group-hover:scale-110 transition-transform" />
-                <h3 className="font-display font-semibold text-gray-800 mt-3">{feat.title}</h3>
-                <p className="text-sm text-gray-500 mt-1">{feat.desc}</p>
+                <h3 className="font-display font-semibold text-gray-800 dark:text-gray-100 mt-3">{feat.title}</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{feat.desc}</p>
               </div>
             ))}
           </div>
@@ -132,23 +132,23 @@ const Home = () => {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900">
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 dark:text-white">
               Shop by <span className="text-gradient">Category</span>
             </h2>
-            <p className="text-gray-500 mt-3">Find exactly what you&apos;re looking for</p>
+            <p className="text-gray-500 dark:text-gray-400 mt-3">Find exactly what you&apos;re looking for</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {categories.map((cat) => (
               <Link
                 key={cat.name}
                 to={`/products?category=${encodeURIComponent(cat.name)}`}
-                className={`p-6 rounded-2xl bg-gradient-to-br ${cat.color} hover:shadow-lg hover:scale-105 
-                  transition-all duration-300 text-center group`}
+                className={`p-6 rounded-2xl bg-gradient-to-br ${cat.color} dark:from-gray-800 dark:to-gray-900 
+                  hover:shadow-lg hover:scale-105 transition-all duration-300 text-center group border border-transparent dark:border-gray-700`}
               >
                 <span className="text-4xl block group-hover:scale-110 transition-transform">
                   {cat.emoji}
                 </span>
-                <span className="font-display font-semibold text-gray-700 mt-2 block text-sm">
+                <span className="font-display font-semibold text-gray-700 dark:text-gray-200 mt-2 block text-sm">
                   {cat.name}
                 </span>
               </Link>
@@ -158,13 +158,13 @@ const Home = () => {
       </section>
 
       {/* Featured Products */}
-      <section className="py-16 bg-white/60">
+      <section className="py-16 bg-white/60 dark:bg-gray-900/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900">
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 dark:text-white">
               <span className="text-gradient">Featured</span> Products
             </h2>
-            <p className="text-gray-500 mt-3">Our most loved crochet creations</p>
+            <p className="text-gray-500 dark:text-gray-400 mt-3">Our most loved crochet creations</p>
           </div>
 
           {loading ? (
@@ -192,13 +192,13 @@ const Home = () => {
       </section>
 
       {/* Reviews Section */}
-      <section className="py-20 bg-primary-50/30">
+      <section className="py-20 bg-primary-50/30 dark:bg-gray-900/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900">
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 dark:text-white">
               Customer <span className="text-gradient">Reviews</span>
             </h2>
-            <p className="text-gray-500 mt-3 italic">Real stories from our happy yarn family</p>
+            <p className="text-gray-500 dark:text-gray-400 mt-3 italic">Real stories from our happy yarn family</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -207,10 +207,10 @@ const Home = () => {
                 key={i}
                 className="card p-8 relative hover:scale-[1.02] transition-all duration-300 group"
               >
-                <div className="absolute top-4 right-6 text-primary-200 text-6xl font-serif opacity-50 group-hover:text-primary-300 transition-colors">
+                <div className="absolute top-4 right-6 text-primary-200 dark:text-primary-900/40 text-6xl font-serif opacity-50 group-hover:text-primary-300 transition-colors">
                   &ldquo;
                 </div>
-                <p className="text-gray-600 relative z-10 leading-relaxed italic mb-8">
+                <p className="text-gray-600 dark:text-gray-300 relative z-10 leading-relaxed italic mb-8">
                   {review.message}
                 </p>
                 <div className="mt-auto pt-6 border-t border-primary-50 flex items-center gap-4">
@@ -218,7 +218,7 @@ const Home = () => {
                     {review.name.charAt(0)}
                   </div>
                   <div>
-                    <h4 className="font-display font-bold text-gray-800">{review.name}</h4>
+                    <h4 className="font-display font-bold text-gray-800 dark:text-gray-100">{review.name}</h4>
                     <p className="text-xs text-primary-500 font-medium uppercase tracking-wider">
                       📍 {review.place}
                     </p>
