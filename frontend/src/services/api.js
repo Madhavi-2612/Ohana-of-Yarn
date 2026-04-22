@@ -41,8 +41,10 @@ export const verifyPayment = (data) => API.post('/payment/verify', data);
 export const generateWhatsAppURL = (data) => API.post('/whatsapp/generate', data);
 
 // Reviews
-export const getReviews = () => API.get('/reviews');
+export const getReviews = (params) => API.get('/reviews', { params });
 export const createReview = (data) => API.post('/reviews', data);
+export const updateReviewStatus = (id) => API.put(`/reviews/${id}/approve`);
+export const deleteReview = (id) => API.delete(`/reviews/${id}`);
 
 /**
  * Consistently construct product image URLs

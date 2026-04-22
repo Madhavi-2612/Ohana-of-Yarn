@@ -19,6 +19,7 @@ import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminProducts from './pages/admin/AdminProducts';
 import AdminProductForm from './pages/admin/AdminProductForm';
 import AdminOrders from './pages/admin/AdminOrders';
+import AdminReviews from './pages/admin/AdminReviews';
 
 function App() {
   return (
@@ -91,6 +92,14 @@ function App() {
             element={
               <AdminRoute>
                 <AdminOrders />
+              </AdminRoute>
+            }
+          />
+          <Route
+            path="/admin/reviews"
+            element={
+              <AdminRoute>
+                <AdminReviews />
               </AdminRoute>
             }
           />

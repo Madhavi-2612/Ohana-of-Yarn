@@ -24,6 +24,13 @@ const AdminDashboard = () => {
       desc: 'Create a new product listing',
       color: 'from-sage-400 to-sage-600',
     },
+    {
+      to: '/admin/reviews',
+      icon: HiOutlineClipboardList,
+      title: 'Manage Reviews',
+      desc: 'Approve or delete customer reviews',
+      color: 'from-amber-400 to-amber-500',
+    },
   ];
 
   return (
