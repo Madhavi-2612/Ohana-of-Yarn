@@ -101,20 +101,18 @@ const Home = () => {
             <div className="relative hidden md:block">
               <div className="relative w-[450px] h-[450px] flex items-center justify-center">
                 {/* Glow Effect */}
-                <div className="absolute inset-0 gradient-primary rounded-full opacity-20 blur-3xl animate-pulse" />
+                <div className="absolute inset-0 gradient-primary rounded-full opacity-30 blur-3xl animate-pulse" />
                 
                 {/* Main Circle Container */}
-                <div className="relative w-full h-full p-8">
-                  <div className="w-full h-full bg-white/90 dark:bg-gray-800/80 backdrop-blur-md rounded-full shadow-2xl border-8 border-white/50 dark:border-gray-700/50 overflow-hidden flex items-center justify-center animate-float">
-                    <img 
-                      src={logo} 
-                      alt="Ohana of Yarn" 
-                      className="w-[85%] h-[85%] object-contain" 
-                      onError={(e) => {
-                        e.target.src = 'https://placehold.co/400x400/f0e4d4/2e8ecc?text=🧶';
-                      }}
-                    />
-                  </div>
+                <div className="w-full h-full rounded-full overflow-hidden shadow-2xl border-4 border-white/20 dark:border-gray-700/30 animate-float">
+                  <img 
+                    src={logo} 
+                    alt="Ohana of Yarn" 
+                    className="w-full h-full object-cover" 
+                    onError={(e) => {
+                      e.target.src = 'https://placehold.co/400x400/f0e4d4/2e8ecc?text=🧶';
+                    }}
+                  />
                 </div>
               </div>
             </div>
