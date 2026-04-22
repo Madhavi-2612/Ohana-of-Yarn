@@ -3,10 +3,11 @@ const Product = require('../models/Product');
 // GET /api/products
 exports.getProducts = async (req, res) => {
   try {
-    const { category, minPrice, maxPrice, featured, search } = req.query;
+    const { category, subcategory, minPrice, maxPrice, featured, search } = req.query;
     const filter = {};
 
     if (category) filter.category = category;
+    if (subcategory) filter.subcategory = subcategory;
     if (featured === 'true') filter.featured = true;
     if (minPrice || maxPrice) {
       filter.price = {};
@@ -40,7 +41,7 @@ exports.getProductById = async (req, res) => {
 // POST /api/products (Admin)
 exports.createProduct = async (req, res) => {
   try {
-    const { name, description, price, category, stock, featured } = req.body;
+    const { name, description, price, category, subcategory, stock, featured } = req.body;
     const image = req.file ? req.file.path : '/uploads/default-product.jpg';
 
     const product = await Product.create({
@@ -48,6 +49,7 @@ exports.createProduct = async (req, res) => {
       description,
       price,
       category,
+      subcategory,
       image,
       stock,
       featured: featured === 'true' || featured === true,
@@ -67,12 +69,13 @@ exports.updateProduct = async (req, res) => {
       return res.status(404).json({ message: 'Product not found' });
     }
 
-    const { name, description, price, category, stock, featured } = req.body;
+    const { name, description, price, category, subcategory, stock, featured } = req.body;
 
     product.name = name || product.name;
     product.description = description || product.description;
     product.price = price !== undefined ? price : product.price;
     product.category = category || product.category;
+    product.subcategory = subcategory !== undefined ? subcategory : product.subcategory;
     product.stock = stock !== undefined ? stock : product.stock;
     product.featured = featured !== undefined ? (featured === 'true' || featured === true) : product.featured;
 

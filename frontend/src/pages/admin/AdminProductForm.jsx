@@ -4,16 +4,13 @@ import { getProductById, createProduct, updateProduct, getImageUrl } from '../..
 import toast from 'react-hot-toast';
 import { HiOutlineArrowLeft, HiOutlinePhotograph } from 'react-icons/hi';
 
-const CATEGORIES = [
-  'Amigurumi',
-  'Bags',
-  'Clothing',
-  'Home Decor',
-  'Accessories',
-  'Baby Items',
-  'Gifts',
-  'Other',
-];
+const CATEGORIES_HIERARCHY = {
+  Products: ['Bags', 'Flower'],
+  Pattern: ['Top', 'Skirt'],
+  Other: ['Miscellaneous'],
+};
+
+const MAIN_CATEGORIES = Object.keys(CATEGORIES_HIERARCHY);
 
 const AdminProductForm = () => {
   const { id } = useParams();
@@ -27,7 +24,8 @@ const AdminProductForm = () => {
     name: '',
     description: '',
     price: '',
-    category: CATEGORIES[0],
+    category: MAIN_CATEGORIES[0],
+    subcategory: CATEGORIES_HIERARCHY[MAIN_CATEGORIES[0]][0],
     stock: '',
     featured: false,
   });
@@ -42,7 +40,8 @@ const AdminProductForm = () => {
             name: data.name,
             description: data.description,
             price: data.price,
-            category: data.category,
+            category: data.category || MAIN_CATEGORIES[0],
+            subcategory: data.subcategory || (CATEGORIES_HIERARCHY[data.category] ? CATEGORIES_HIERARCHY[data.category][0] : ''),
             stock: data.stock,
             featured: data.featured,
           });
@@ -167,16 +166,37 @@ const AdminProductForm = () => {
                 />
               </div>
 
-              <div>
+               <div>
                 <label className="block text-sm font-medium text-gray-600 mb-1">Category</label>
                 <select
                   name="category"
                   value={formData.category}
+                  onChange={(e) => {
+                    const newCat = e.target.value;
+                    setFormData((prev) => ({
+                      ...prev,
+                      category: newCat,
+                      subcategory: CATEGORIES_HIERARCHY[newCat][0],
+                    }));
+                  }}
+                  className="input-field"
+                >
+                  {MAIN_CATEGORIES.map((cat) => (
+                    <option key={cat} value={cat}>{cat}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-600 mb-1">Subcategory</label>
+                <select
+                  name="subcategory"
+                  value={formData.subcategory}
                   onChange={handleChange}
                   className="input-field"
                 >
-                  {CATEGORIES.map((cat) => (
-                    <option key={cat} value={cat}>{cat}</option>
+                  {CATEGORIES_HIERARCHY[formData.category]?.map((sub) => (
+                    <option key={sub} value={sub}>{sub}</option>
                   ))}
                 </select>
               </div>

@@ -4,17 +4,10 @@ import ProductCard from '../components/ProductCard';
 import { getProducts } from '../services/api';
 import { HiOutlineFilter, HiOutlineX } from 'react-icons/hi';
 
-const CATEGORIES = [
-  'All',
-  'Amigurumi',
-  'Bags',
-  'Clothing',
-  'Home Decor',
-  'Accessories',
-  'Baby Items',
-  'Gifts',
-  'Other',
-];
+const CATEGORIES_HIERARCHY = {
+  Products: ['Bags', 'Flower'],
+  Pattern: ['Top', 'Skirt'],
+};
 
 const Products = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -23,6 +16,7 @@ const Products = () => {
   const [showFilters, setShowFilters] = useState(false);
 
   const [category, setCategory] = useState(searchParams.get('category') || 'All');
+  const [subcategory, setSubcategory] = useState(searchParams.get('subcategory') || '');
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
   const [search, setSearch] = useState('');
@@ -33,6 +27,7 @@ const Products = () => {
       try {
         const params = {};
         if (category !== 'All') params.category = category;
+        if (subcategory) params.subcategory = subcategory;
         if (minPrice) params.minPrice = minPrice;
         if (maxPrice) params.maxPrice = maxPrice;
         if (search) params.search = search;
@@ -46,15 +41,18 @@ const Products = () => {
       }
     };
     fetchProducts();
-  }, [category, minPrice, maxPrice, search]);
+  }, [category, subcategory, minPrice, maxPrice, search]);
 
   useEffect(() => {
     const cat = searchParams.get('category');
+    const sub = searchParams.get('subcategory');
     if (cat) setCategory(cat);
+    if (sub) setSubcategory(sub);
   }, [searchParams]);
 
   const clearFilters = () => {
     setCategory('All');
+    setSubcategory('');
     setMinPrice('');
     setMaxPrice('');
     setSearch('');
@@ -112,29 +110,73 @@ const Products = () => {
             {/* Category */}
             <div className="mb-6">
               <h4 className="text-sm font-semibold text-gray-600 mb-3 uppercase tracking-wider">
-                Category
+                Categories
               </h4>
-              <div className="space-y-1.5">
-                {CATEGORIES.map((cat) => (
-                  <button
-                    key={cat}
-                    onClick={() => {
-                      setCategory(cat);
-                      if (cat === 'All') {
-                        searchParams.delete('category');
-                      } else {
-                        searchParams.set('category', cat);
-                      }
-                      setSearchParams(searchParams);
-                    }}
-                    className={`block w-full text-left px-3 py-2 rounded-lg text-sm transition-all ${
-                      category === cat
-                        ? 'bg-primary-100 text-primary-700 font-semibold'
-                        : 'text-gray-600 hover:bg-primary-50'
-                    }`}
-                  >
-                    {cat}
-                  </button>
+              <div className="space-y-4">
+                {/* All Products Option */}
+                <button
+                  onClick={() => {
+                    setCategory('All');
+                    setSubcategory('');
+                    setSearchParams({});
+                  }}
+                  className={`block w-full text-left px-3 py-2 rounded-lg text-sm transition-all ${
+                    category === 'All'
+                      ? 'bg-primary-100 text-primary-700 font-semibold'
+                      : 'text-gray-600 hover:bg-primary-50'
+                  }`}
+                >
+                  All Products
+                </button>
+
+                {/* Hierarchical Categories */}
+                {Object.entries(CATEGORIES_HIERARCHY).map(([mainCat, subs]) => (
+                  <div key={mainCat} className="space-y-1">
+                    <button
+                      onClick={() => {
+                        if (category === mainCat && !subcategory) {
+                          setCategory('All');
+                          setSubcategory('');
+                          searchParams.delete('category');
+                        } else {
+                          setCategory(mainCat);
+                          setSubcategory('');
+                          searchParams.set('category', mainCat);
+                          searchParams.delete('subcategory');
+                        }
+                        setSearchParams(searchParams);
+                      }}
+                      className={`block w-full text-left px-3 py-2 rounded-lg text-sm transition-all font-semibold ${
+                        category === mainCat && !subcategory
+                          ? 'text-primary-600 bg-primary-50/50'
+                          : 'text-gray-800 hover:text-primary-600'
+                      }`}
+                    >
+                      {mainCat}
+                    </button>
+                    
+                    <div className="ml-4 border-l-2 border-primary-50 pl-2 space-y-1 mt-1">
+                      {subs.map((sub) => (
+                        <button
+                          key={sub}
+                          onClick={() => {
+                            setCategory(mainCat);
+                            setSubcategory(sub);
+                            searchParams.set('category', mainCat);
+                            searchParams.set('subcategory', sub);
+                            setSearchParams(searchParams);
+                          }}
+                          className={`block w-full text-left px-3 py-1.5 rounded-md text-xs transition-all ${
+                            subcategory === sub
+                              ? 'bg-primary-100 text-primary-700 font-medium'
+                              : 'text-gray-500 hover:bg-primary-50 hover:text-primary-600'
+                          }`}
+                        >
+                          {sub}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>

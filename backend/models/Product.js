@@ -20,6 +20,8 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Please provide a category'],
       enum: [
+        'Products',
+        'Pattern',
         'Amigurumi',
         'Bags',
         'Clothing',
@@ -29,6 +31,10 @@ const productSchema = new mongoose.Schema(
         'Gifts',
         'Other',
       ],
+    },
+    subcategory: {
+      type: String,
+      trim: true,
     },
     image: {
       type: String,

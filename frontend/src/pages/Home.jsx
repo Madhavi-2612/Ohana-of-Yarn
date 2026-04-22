@@ -31,12 +31,12 @@ const Home = () => {
   ];
 
   const categories = [
-    { name: 'Amigurumi', emoji: '🧸', color: 'from-sky-200 to-sky-100' },
-    { name: 'Bags', emoji: '👜', color: 'from-amber-200 to-amber-100' },
-    { name: 'Clothing', emoji: '👗', color: 'from-rose-200 to-rose-100' },
-    { name: 'Home Decor', emoji: '🏡', color: 'from-teal-200 to-teal-100' },
-    { name: 'Accessories', emoji: '🎀', color: 'from-orange-200 to-orange-100' },
-    { name: 'Baby Items', emoji: '👶', color: 'from-cyan-200 to-cyan-100' },
+    { name: 'Products', emoji: '👜', color: 'from-sky-200 to-sky-100' },
+    { name: 'Pattern', emoji: '📝', color: 'from-rose-200 to-rose-100' },
+    { name: 'Bags', emoji: '🛍️', color: 'from-amber-200 to-amber-100' },
+    { name: 'Flower', emoji: '🌸', color: 'from-teal-200 to-teal-100' },
+    { name: 'Top', emoji: '👕', color: 'from-orange-200 to-orange-100' },
+    { name: 'Skirt', emoji: '👗', color: 'from-cyan-200 to-cyan-100' },
   ];
 
   return (
