@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { getAllOrders, updateOrderStatus } from '../../services/api';
+import { getAllOrders, updateOrderStatus, deleteOrder } from '../../services/api';
+import { HiOutlineTrash } from 'react-icons/hi';
 import toast from 'react-hot-toast';
 
 const STATUS_OPTIONS = [
@@ -54,6 +55,17 @@ const AdminOrders = () => {
       setOrders(orders.map((o) => (o._id === orderId ? { ...o, paymentStatus } : o)));
     } catch (err) {
       toast.error('Update failed');
+    }
+  };
+
+  const handleDelete = async (orderId) => {
+    if (!window.confirm('Are you sure you want to delete this order? This action cannot be undone.')) return;
+    try {
+      await deleteOrder(orderId);
+      toast.success('Order deleted');
+      setOrders(orders.filter((o) => o._id !== orderId));
+    } catch (err) {
+      toast.error('Delete failed');
     }
   };
 
@@ -136,7 +148,14 @@ const AdminOrders = () => {
                       </div>
                     ))}
                   </div>
-                  <div className="border-t border-primary-100 dark:border-gray-800 mt-3 pt-2 text-right">
+                  <div className="border-t border-primary-100 dark:border-gray-800 mt-3 pt-2 flex justify-between items-center">
+                    <button
+                      onClick={() => handleDelete(order._id)}
+                      className="p-2 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+                      title="Delete Order"
+                    >
+                      <HiOutlineTrash className="w-5 h-5" />
+                    </button>
                     <span className="font-bold text-primary-600 dark:text-primary-400 text-lg">
                       Total: ₹{order.totalAmount?.toLocaleString('en-IN')}
                     </span>

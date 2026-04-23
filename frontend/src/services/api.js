@@ -32,6 +32,7 @@ export const createOrder = (data) => API.post('/orders', data);
 export const getMyOrders = () => API.get('/orders/my');
 export const getAllOrders = () => API.get('/orders');
 export const updateOrderStatus = (id, data) => API.put(`/orders/${id}/status`, data);
+export const deleteOrder = (id) => API.delete(`/orders/${id}`);
 
 // Payment
 export const createRazorpayOrder = (data) => API.post('/payment/create-order', data);
