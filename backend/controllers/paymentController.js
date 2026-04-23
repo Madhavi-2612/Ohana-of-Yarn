@@ -17,6 +17,8 @@ exports.createRazorpayOrder = async (req, res) => {
       receipt: `receipt_${Date.now()}`,
     };
 
+    console.log('Creating Razorpay Order with options:', options);
+
     const order = await razorpay.orders.create(options);
     res.json({
       id: order.id,
@@ -24,7 +26,11 @@ exports.createRazorpayOrder = async (req, res) => {
       currency: order.currency,
     });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error('RAZORPAY ERROR:', error);
+    res.status(500).json({ 
+      message: error.message,
+      detail: error.description || 'Payment initiation failed'
+    });
   }
 };
 
