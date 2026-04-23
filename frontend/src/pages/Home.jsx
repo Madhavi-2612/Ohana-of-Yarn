@@ -103,10 +103,10 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="inline-block badge bg-primary-100 text-primary-600 dark:bg-primary-900/40 dark:text-primary-300 mb-4 border border-transparent dark:border-primary-800/50">
+              <span className="inline-block font-cursive text-xl bg-primary-100 text-primary-600 dark:bg-primary-900/40 dark:text-primary-300 px-4 py-1 rounded-full mb-4 border border-transparent dark:border-primary-800/50">
                 ✨ Handcrafted Creations
               </span>
-              <h1 className="text-4xl md:text-6xl font-display font-bold text-gray-900 dark:text-white leading-tight">
+               <h1 className="text-5xl md:text-7xl font-cursive font-bold text-gray-900 dark:text-white leading-tight">
                 Beautiful{' '}
                 <span className="text-gradient">Crochet</span>{' '}
                 Pieces Made with Love

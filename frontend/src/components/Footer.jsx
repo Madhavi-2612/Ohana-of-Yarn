@@ -11,9 +11,8 @@ const Footer = () => {
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-2 mb-4 group">
               <img src={logo} alt="Ohana of Yarn Logo" className="w-10 h-10 object-contain rounded-full border-2 border-primary-200 dark:border-gray-700" />
-              <span className="text-2xl font-display font-bold text-gradient">
+              <span className="text-2xl font-cursive font-bold text-gradient tracking-wide">
                 Ohana of Yarn
-
               </span>
             </div>
             <p className="text-gray-500 dark:text-gray-400 max-w-md leading-relaxed">

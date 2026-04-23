@@ -31,7 +31,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
             <img src={logo} alt="Ohana of Yarn Logo" className="w-10 h-10 object-contain rounded-full border-2 border-primary-200" />
-            <span className="text-xl font-display font-bold text-gradient">
+            <span className="text-2xl font-cursive font-bold text-gradient tracking-wide">
               Ohana of Yarn
             </span>
           </Link>
