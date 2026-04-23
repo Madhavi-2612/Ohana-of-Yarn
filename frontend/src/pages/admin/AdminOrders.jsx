@@ -67,7 +67,7 @@ const AdminOrders = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <h1 className="text-3xl font-display font-bold text-gray-900 mb-8">
+      <h1 className="text-3xl font-display font-bold text-gray-900 dark:text-white mb-8">
         Manage <span className="text-gradient">Orders</span>
       </h1>
 
@@ -82,39 +82,39 @@ const AdminOrders = () => {
               <div className="grid md:grid-cols-4 gap-6">
                 {/* User Info */}
                 <div>
-                  <p className="text-xs text-gray-400 mb-1">Customer</p>
-                  <p className="font-semibold text-gray-800">{order.user?.name || 'N/A'}</p>
-                  <p className="text-sm text-gray-500">{order.user?.email}</p>
-                  <p className="text-xs text-gray-400 mt-3 mb-1">Date</p>
-                  <p className="text-sm text-gray-800">
+                  <p className="text-xs text-gray-400 dark:text-gray-500 mb-1">Customer</p>
+                  <p className="font-semibold text-gray-800 dark:text-gray-100">{order.user?.name || 'N/A'}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">{order.user?.email}</p>
+                  <p className="text-xs text-gray-400 dark:text-gray-500 mt-3 mb-1">Date</p>
+                  <p className="text-sm text-gray-800 dark:text-gray-200">
                     {new Date(order.createdAt).toLocaleString('en-IN')}
                   </p>
                 </div>
 
                 {/* Shipping Address */}
                 <div>
-                  <p className="text-xs text-gray-400 mb-1">Shipping</p>
-                  <p className="text-sm text-gray-800 font-medium">{order.shippingAddress?.fullName}</p>
-                  <p className="text-sm text-gray-600">{order.shippingAddress?.address}</p>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-xs text-gray-400 dark:text-gray-500 mb-1">Shipping</p>
+                  <p className="text-sm text-gray-800 dark:text-gray-100 font-medium">{order.shippingAddress?.fullName}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">{order.shippingAddress?.address}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
                     {order.shippingAddress?.city}, {order.shippingAddress?.state} {order.shippingAddress?.pincode}
                   </p>
-                  <p className="text-sm text-gray-600">{order.shippingAddress?.phone}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">{order.shippingAddress?.phone}</p>
                   
                   {(order.isGift || order.customizationNote) && (
                     <div className="mt-4 p-3 bg-red-50/50 rounded-lg border border-red-100">
                       {order.isGift && (
                         <div className="mb-2">
-                          <p className="text-[10px] font-bold text-red-600 uppercase tracking-wider mb-1">🎁 GIFT ORDER</p>
+                          <p className="text-[10px] font-bold text-red-600 dark:text-red-400 uppercase tracking-wider mb-1">🎁 GIFT ORDER</p>
                           {order.giftMessage && (
-                            <p className="text-xs text-gray-700 italic border-l-2 border-red-200 pl-2">"{order.giftMessage}"</p>
+                            <p className="text-xs text-gray-700 dark:text-gray-300 italic border-l-2 border-red-200 dark:border-red-900/50 pl-2">"{order.giftMessage}"</p>
                           )}
                         </div>
                       )}
                       {order.customizationNote && (
                         <div>
-                          <p className="text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1">📝 CUSTOMIZATION</p>
-                          <p className="text-xs text-gray-700">{order.customizationNote}</p>
+                          <p className="text-[10px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">📝 CUSTOMIZATION</p>
+                          <p className="text-xs text-gray-700 dark:text-gray-300">{order.customizationNote}</p>
                         </div>
                       )}
                     </div>
@@ -127,17 +127,17 @@ const AdminOrders = () => {
                   <div className="max-h-32 overflow-y-auto space-y-2 pr-2">
                     {order.items.map((item, i) => (
                       <div key={i} className="flex justify-between text-sm">
-                        <span className="text-gray-600 truncate mr-2">
+                        <span className="text-gray-600 dark:text-gray-400 truncate mr-2">
                           {item.name} × {item.quantity}
                         </span>
-                        <span className="font-semibold">
+                        <span className="font-semibold text-gray-800 dark:text-gray-200">
                           ₹{(item.price * item.quantity).toLocaleString('en-IN')}
                         </span>
                       </div>
                     ))}
                   </div>
-                  <div className="border-t border-primary-100 mt-3 pt-2 text-right">
-                    <span className="font-bold text-primary-600 text-lg">
+                  <div className="border-t border-primary-100 dark:border-gray-800 mt-3 pt-2 text-right">
+                    <span className="font-bold text-primary-600 dark:text-primary-400 text-lg">
                       Total: ₹{order.totalAmount?.toLocaleString('en-IN')}
                     </span>
                   </div>
@@ -145,16 +145,16 @@ const AdminOrders = () => {
               </div>
 
               {/* Status Controls */}
-              <div className="mt-6 pt-6 border-t border-primary-100 grid md:grid-cols-2 gap-6 bg-primary-50/30 -mx-6 p-6 -mb-6">
+              <div className="mt-6 pt-6 border-t border-primary-100 dark:border-gray-800 grid md:grid-cols-2 gap-6 bg-primary-50/30 dark:bg-gray-900/40 -mx-6 p-6 -mb-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-600 mb-2">
+                  <label className="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">
                     Order Status
                   </label>
                   <div className="flex items-center gap-3">
                     <select
                       value={order.status}
                       onChange={(e) => handleStatusChange(order._id, e.target.value)}
-                      className="input-field py-2 text-sm bg-white"
+                      className="input-field py-2 text-sm bg-white dark:bg-gray-800"
                     >
                       {STATUS_OPTIONS.map((status) => (
                         <option key={status} value={status}>
@@ -169,21 +169,21 @@ const AdminOrders = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-600 mb-2">
+                  <label className="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">
                     Payment Info
                   </label>
                   <div className="flex items-center gap-3">
                     <select
                       value={order.paymentStatus}
                       onChange={(e) => handlePaymentChange(order._id, e.target.value)}
-                      className="input-field py-2 text-sm bg-white"
+                      className="input-field py-2 text-sm bg-white dark:bg-gray-800"
                     >
                       <option value="pending">Pending</option>
                       <option value="paid">Paid</option>
                       <option value="failed">Failed</option>
                     </select>
-                    <div className="flex flex-col text-xs text-gray-500">
-                      <span>Method: <strong className="text-gray-700 uppercase">{order.paymentMethod}</strong></span>
+                    <div className="flex flex-col text-xs text-gray-500 dark:text-gray-400">
+                      <span>Method: <strong className="text-gray-700 dark:text-gray-200 uppercase">{order.paymentMethod}</strong></span>
                       {order.razorpayPaymentId && <span>ID: {order.razorpayPaymentId}</span>}
                     </div>
                   </div>
