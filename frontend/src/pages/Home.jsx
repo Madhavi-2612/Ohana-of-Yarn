@@ -14,21 +14,28 @@ const Home = () => {
   const [reviewForm, setReviewForm] = useState({ name: '', place: '', message: '', rating: 5 });
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchFeatured = async () => {
       try {
-        const [productsRes, reviewsRes] = await Promise.all([
-          getProducts({ featured: 'true' }),
-          getReviews()
-        ]);
-        setFeatured(productsRes.data.slice(0, 5));
-        setReviewsList(reviewsRes.data.slice(0, 6)); // Show latest 6 reviews
+        const { data } = await getProducts({ featured: 'true' });
+        setFeatured(data.slice(0, 5));
       } catch (err) {
         console.error(err);
       } finally {
         setLoading(false);
       }
     };
-    fetchData();
+
+    const fetchReviews = async () => {
+      try {
+        const { data } = await getReviews();
+        setReviewsList(data.slice(0, 6));
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchFeatured();
+    fetchReviews();
   }, []);
 
   const handleReviewSubmit = async (e) => {
