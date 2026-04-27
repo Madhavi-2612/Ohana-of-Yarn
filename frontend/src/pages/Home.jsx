@@ -102,6 +102,11 @@ const Home = () => {
           <div className="absolute -top-20 -right-20 w-72 h-72 bg-primary-200/30 rounded-full blur-3xl animate-float" />
           <div className="absolute bottom-20 -left-20 w-96 h-96 bg-lavender-200/30 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
           <div className="absolute top-1/2 right-1/4 w-64 h-64 bg-sage-200/30 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }} />
+          
+          {/* Floating Yarn Elements */}
+          <div className="absolute top-[15%] left-[10%] text-6xl opacity-20 animate-slow-float pointer-events-none hidden lg:block" style={{ animationDelay: '0s' }}>🧶</div>
+          <div className="absolute bottom-[20%] right-[40%] text-5xl opacity-15 animate-slow-float pointer-events-none hidden lg:block" style={{ animationDelay: '2s' }}>🧶</div>
+          <div className="absolute top-[40%] right-[10%] text-7xl opacity-20 animate-slow-float pointer-events-none hidden lg:block" style={{ animationDelay: '4s' }}>🧶</div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">

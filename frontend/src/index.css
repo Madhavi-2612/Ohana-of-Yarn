@@ -89,6 +89,16 @@
   50% { transform: translateY(-20px); }
 }
 
+@keyframes slow-float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(10px, -15px) rotate(5deg); }
+  66% { transform: translate(-10px, -5px) rotate(-5deg); }
+}
+
+.animate-slow-float {
+  animation: slow-float 8s ease-in-out infinite;
+}
+
 /* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 8px;
