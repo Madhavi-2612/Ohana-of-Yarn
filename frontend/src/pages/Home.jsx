@@ -69,7 +69,7 @@ const Home = () => {
     { name: 'Tops', emoji: '👕', color: 'from-orange-200 to-orange-100' },
   ];
 
-  const reviews = reviewsList.length > 0 ? reviewsList : [
+  const placeholderReviews = [
     {
       name: 'Komal',
       place: 'Delhi',
@@ -89,6 +89,10 @@ const Home = () => {
       rating: 5
     },
   ];
+
+  const reviews = reviewsList.length > 0 
+    ? [...reviewsList, ...placeholderReviews].slice(0, 6)
+    : placeholderReviews;
 
   return (
     <div>
