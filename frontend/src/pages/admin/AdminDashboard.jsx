@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { HiOutlineShoppingBag, HiOutlineClipboardList, HiOutlinePlusCircle } from 'react-icons/hi';
+import { HiOutlineShoppingBag, HiOutlineClipboardList, HiOutlinePlusCircle, HiOutlineCog } from 'react-icons/hi';
 
 const AdminDashboard = () => {
   const cards = [
@@ -30,6 +30,13 @@ const AdminDashboard = () => {
       title: 'Manage Reviews',
       desc: 'Approve or delete customer reviews',
       color: 'from-amber-400 to-amber-500',
+    },
+    {
+      to: '/admin/settings',
+      icon: HiOutlineCog,
+      title: 'Admin Settings',
+      desc: 'Update profile and security',
+      color: 'from-rose-400 to-rose-500',
     },
   ];
 

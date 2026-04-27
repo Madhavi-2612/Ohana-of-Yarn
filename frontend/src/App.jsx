@@ -20,6 +20,7 @@ import AdminProducts from './pages/admin/AdminProducts';
 import AdminProductForm from './pages/admin/AdminProductForm';
 import AdminOrders from './pages/admin/AdminOrders';
 import AdminReviews from './pages/admin/AdminReviews';
+import AdminSettings from './pages/admin/AdminSettings';
 
 function App() {
   return (
@@ -100,6 +101,14 @@ function App() {
             element={
               <AdminRoute>
                 <AdminReviews />
+              </AdminRoute>
+            }
+          />
+          <Route
+            path="/admin/settings"
+            element={
+              <AdminRoute>
+                <AdminSettings />
               </AdminRoute>
             }
           />
