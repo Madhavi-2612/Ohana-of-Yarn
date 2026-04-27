@@ -5,8 +5,9 @@ import { getProducts } from '../services/api';
 import { HiOutlineFilter, HiOutlineX } from 'react-icons/hi';
 
 const CATEGORIES_HIERARCHY = {
-  Products: ['Bags', 'Flower'],
-  Pattern: ['Top', 'Skirt'],
+  Products: ['Bags', 'Flowers'],
+  Patterns: ['Tops', 'Skirts'],
+  Accessories: [],
 };
 
 const Products = () => {
