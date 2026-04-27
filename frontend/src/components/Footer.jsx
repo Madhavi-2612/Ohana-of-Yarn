@@ -65,7 +65,7 @@ const Footer = () => {
             Ohana of Yarn © {new Date().getFullYear()}
           </p>
           <p className="text-xs opacity-75">
-            Developed by Madhu
+            Developed by Sofi
           </p>
         </div>
       </div>

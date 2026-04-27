@@ -62,11 +62,11 @@ const Home = () => {
 
   const categories = [
     { name: 'Products', emoji: '👜', color: 'from-sky-200 to-sky-100' },
-    { name: 'Pattern', emoji: '📝', color: 'from-rose-200 to-rose-100' },
+    { name: 'Patterns', emoji: '📝', color: 'from-rose-200 to-rose-100' },
+    { name: 'Accessories', emoji: '🎀', color: 'from-indigo-200 to-indigo-100' },
     { name: 'Bags', emoji: '🛍️', color: 'from-amber-200 to-amber-100' },
-    { name: 'Flower', emoji: '🌸', color: 'from-teal-200 to-teal-100' },
-    { name: 'Top', emoji: '👕', color: 'from-orange-200 to-orange-100' },
-    { name: 'Skirt', emoji: '👗', color: 'from-cyan-200 to-cyan-100' },
+    { name: 'Flowers', emoji: '🌸', color: 'from-teal-200 to-teal-100' },
+    { name: 'Tops', emoji: '👕', color: 'from-orange-200 to-orange-100' },
   ];
 
   const reviews = reviewsList.length > 0 ? reviewsList : [
