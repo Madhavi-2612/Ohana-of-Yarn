@@ -5,6 +5,7 @@ import ProductCard from '../components/ProductCard';
 import { HiOutlineSparkles, HiOutlineHeart, HiOutlineTruck, HiOutlineShieldCheck, HiStar } from 'react-icons/hi';
 import toast from 'react-hot-toast';
 import logo from '../assets/logo.png';
+import storyImage from '../assets/story-image.png';
 
 const Home = () => {
   const [featured, setFeatured] = useState([]);
@@ -248,7 +249,7 @@ const Home = () => {
               <div className="order-1 md:order-2 relative">
                 <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500">
                   <img 
-                    src="https://images.unsplash.com/photo-1620733723572-11c53f73a2ad?q=80&w=1000&auto=format&fit=crop" 
+                    src={storyImage} 
                     alt="Crochet Crafting" 
                     className="w-full h-full object-cover"
                   />
