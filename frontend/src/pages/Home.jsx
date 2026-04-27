@@ -111,14 +111,12 @@ const Home = () => {
                 ✨ Handcrafted Creations
               </span>
                <h1 className="text-5xl md:text-7xl font-cursive font-bold text-gray-900 dark:text-white leading-tight">
-                Beautiful{' '}
-                <span className="text-gradient">Crochet</span>{' '}
-                Pieces Made with Love
+                Handmade with <span className="text-gradient">Love</span>, for your Ohana
               </h1>
               <p className="text-lg text-gray-600 dark:text-gray-200 mt-6 max-w-lg leading-relaxed">
-                Discover our collection of handmade crochet items — from adorable
-                amigurumi to cozy accessories. Each piece tells a story of
-                craftsmanship and care.
+                Ohana of Yarn is a cozy space for handmade crochet creations, crafted with love and care. 
+                Inspired by the meaning of &apos;Ohana&apos;—home and family—each piece is unique, 
+                personal, and made to bring comfort, creativity, and connection through handmade art.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mt-8">
                 <Link to="/products" className="btn-primary text-center text-lg py-3 px-8">
