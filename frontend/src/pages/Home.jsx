@@ -202,6 +202,63 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Our Story Section */}
+      <section className="py-20 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-primary-50/50 dark:bg-gray-800/40 rounded-[3rem] p-8 md:p-16 relative overflow-hidden border border-primary-100/50 dark:border-gray-700/50">
+            {/* Background elements */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-primary-200/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-lavender-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+
+            <div className="grid md:grid-cols-2 gap-12 items-center relative z-10">
+              <div className="order-2 md:order-1">
+                <span className="text-primary-600 dark:text-primary-400 font-display font-bold tracking-widest text-sm uppercase mb-4 block">
+                  Our Story
+                </span>
+                <h2 className="text-4xl md:text-5xl font-cursive font-bold text-gray-900 dark:text-white mb-6">
+                  What <span className="text-gradient">Ohana</span> Means to Us
+                </h2>
+                <div className="space-y-4 text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                  <p>
+                    In our family, Ohana means that nobody gets left behind or forgotten. 
+                    That same philosophy goes into every single stitch we make. 
+                    Ohana of Yarn started as a small dream to share the warmth and 
+                    comfort of handmade art with the world.
+                  </p>
+                  <p>
+                    Whether it&apos;s a tiny amigurumi friend for a child or a cozy 
+                    accessory for a loved one, we believe that handmade gifts carry 
+                    a special kind of magic—the magic of time, patience, and pure love.
+                  </p>
+                </div>
+                <div className="mt-8 flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-600 dark:text-primary-400">
+                    <HiOutlineHeart className="w-6 h-6" />
+                  </div>
+                  <p className="font-display font-medium text-gray-800 dark:text-gray-200">
+                    Hand-hooked with care in Chennai
+                  </p>
+                </div>
+              </div>
+              <div className="order-1 md:order-2 relative">
+                <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500">
+                  <img 
+                    src="https://images.unsplash.com/photo-1620733723572-11c53f73a2ad?q=80&w=1000&auto=format&fit=crop" 
+                    alt="Crochet Crafting" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="absolute -bottom-6 -left-6 bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-xl -rotate-6 hidden lg:block border border-primary-50 dark:border-gray-700">
+                  <p className="font-cursive text-2xl text-primary-600 dark:text-primary-400 font-bold">
+                    Made with Love
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Featured Products */}
       <section className="py-16 bg-white/60 dark:bg-gray-900/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
